@@ -171,6 +171,35 @@ public class MeritBankController {
 		return cdOfferingRepo.findAll(); 
 	}
 	
+	
+	/**
+	 * AN ATTEMPT AT: 
+	 * 	creating and getting accountHolder details per accountholder i.d.
+	 * 	will have to check with tech leads on how to manage
+	 * 
+	 *
+	@PostMapping(value = "/AccountHolders/{id}/ContactDetails")//(Rufaro addition edit 5.16)
+	@ResponseStatus(HttpStatus.CREATED)
+	public AccountHolderContactDetails accountHolderContactDetails(@RequestBody @Valid AccountHolderContactDetails aHCD, @PathVariable
+			(name = "id") long id) throws ExceedsCombinedBalanceLimitException, NotFoundException{
+		AccountHolder a = accountHolderRepo.findById(id);
+		a.setAccountHolderContactDetails(aHCD); 
+		accountHolderContactRepo.save(aHCD);
+		return aHCD; 
+	}
+	/
+	
+	/**
+	 * 
+	 *AN ATTEMPT AT: 
+	 *	creating and getting account holder details per the accountholder i.d.
+	 *	will have to check with tech leads on how to manage
+	
+	@GetMapping(value = "/AccountHolders/{id}/ContactDetails")//(Rufaro addition edit 5.16)
+	@ResponseStatus(HttpStatus.OK)
+	public List<AccountHolderContactDetails> getAccountHolderContactDetails(@PathVariable (name = "id") long id) throws NotFoundException {
+		return accountHolderContactRepo.findByAccountholder(id); //(Rufaro- For some reason it doesnt like "findByAccountHolderId)
+	*/
 		
 
 }

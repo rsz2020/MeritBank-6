@@ -16,7 +16,7 @@ public class AccountHolderContactDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "contactId")
-	private Long contactId;
+	private long contactId;
 	
 	
 	private String emailAddress;
