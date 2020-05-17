@@ -172,12 +172,7 @@ public class MeritBankController {
 	}
 	
 	
-	/**
-	 * AN ATTEMPT AT: 
-	 * 	creating and getting accountHolder details per accountholder i.d.
-	 * 	will have to check with tech leads on how to manage
-	 * 
-	 *
+	
 	@PostMapping(value = "/AccountHolders/{id}/ContactDetails")//(Rufaro addition edit 5.16)
 	@ResponseStatus(HttpStatus.CREATED)
 	public AccountHolderContactDetails accountHolderContactDetails(@RequestBody @Valid AccountHolderContactDetails aHCD, @PathVariable
@@ -185,9 +180,9 @@ public class MeritBankController {
 		AccountHolder a = accountHolderRepo.findById(id);
 		a.setAccountHolderContactDetails(aHCD); 
 		accountHolderContactRepo.save(aHCD);
-		return aHCD; 
+		return aHCD; //Need to map accountholder to 1:1 with accountdetails
 	}
-	/
+	
 	
 	/**
 	 * 

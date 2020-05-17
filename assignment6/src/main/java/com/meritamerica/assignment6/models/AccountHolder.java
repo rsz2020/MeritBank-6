@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,10 +41,14 @@ public class AccountHolder implements Comparable <AccountHolder> {
 	@Column(name = "account_Id")
 	private Long id;
 	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "accountHolder")
+	private AccountHolderContactDetails accountHolderContactDetails;
 	
+	/**
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "contactId", referencedColumnName = "contactId")
 	private AccountHolderContactDetails accountHolderContactDetails;
+	*/
 	
 
 	@OneToMany(cascade = CascadeType.ALL)
